@@ -1,3 +1,19 @@
 {
-  "items": {}
+  "items": {
+    "6e7c7c1e-8251-475a-aac0-65b1143a686a": {
+      "groups": [],
+      "code": "asdasdad",
+      "title": "asdasdasd",
+      "description": "asdasdasdasdasdas"
+    }
+  },
+  "groups": {
+    "Group1": [
+    ],
+    "Group2": [
+    ],
+    "Group 3": [],
+    "Group4": [],
+    "Group5": []
+  }
 }

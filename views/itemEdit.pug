@@ -2,6 +2,10 @@ extends layout
 
 block content
 	form(id='editForm' onsubmit='updateItem("editForm")')
+		label= 'Groups'
+		select(name='groups' multiple)
+			each group in groups
+				option(name=group value=group )= group
 		label= 'Item Code'
 		input(type='text' name='code' id='code' value=code)
 		label= 'Item Title'

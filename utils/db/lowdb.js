@@ -8,21 +8,20 @@ await db.read();
 
 db.data ||= {}  
 
-const create = async (table, data) => {
+const create = async (table, data, id = uuid()) => {
 	try{
 		await db.read();
 		if(!db.data[table]){
 			db.data[table] = {};
 		}
 		
-		const uid = uuid();
-		db.data[table][uid] = data;
+		db.data[table][id] = data;
 		await db.write();
 
 	} catch (e) {
 		return false;
 	}
-	return true;
+	return id;
 };
 
 const query = async (table, filters = {}) => {
@@ -44,7 +43,8 @@ const query = async (table, filters = {}) => {
 const fetchSingle = async (table, id) => {
 	await db.read();
 	const result = db.data[table][id];
-	if(!result){
+	// console.log(id);
+	if(result === undefined){
 		return false
 	}
 	return result;
@@ -69,10 +69,7 @@ const updateBatch = async (table, updateData, filters = {}) => {
 
 const updateSingle = async (table, updateData, id) => {
 		await db.read();
-		const element = db.data[table][id];
-		for(const key in updateData){
-			element[key] = updateData[key];
-		} 
+		db.data[table][id] = updateData;
 		await db.write();
 }
 

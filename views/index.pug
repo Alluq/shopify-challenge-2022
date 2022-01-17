@@ -5,17 +5,21 @@ block content
 	a(href='./items')
 		button= 'View All Items'
 	h4= 'Create Item'
-	form(method='post' action='./items')
+	form(id='createForm' onsubmit='createItem("createForm")')
+		label= 'Groups'
+		select(name='groups' multiple)
+			each group in groups
+				option(name=group value=group)= group
 		label= 'Item Code'
 		input(type='text' name='code' id='code' )
-		label= 'Group'
-		select(name='group' multiple)
-			each group in groups
-			option(name=group value=group)= group
 		label= 'Item Title'
 		input(type='text' name='title' id='title' )
 		label= 'Item Description'
 		input(type='textbox' name='description' id='description' )
 		input(type='submit')
-		
+	h4= 'Group Name'
+	form(id='groupForm' method='post' action='./groups')
+		label= 'Group Name'
+		input(type='text' name='group_name')
+		input(type='submit')
 		
