@@ -1,0 +1,13 @@
+extends layout 
+
+block content
+	form(id='editForm' onsubmit='updateItem("editForm")')
+		label= 'Item Code'
+		input(type='text' name='code' id='code' value=code)
+		label= 'Item Title'
+		input(type='text' name='title' id='title' value=title)
+		label= 'Item Description'
+		input(type='textbox' name='description' id='description' value=description)
+		input(type='submit')
+	a(href='/items')
+		button= 'back'

@@ -1,0 +1,16 @@
+extends layout
+block content
+	each item, key in item_list
+		table
+			tr
+				each field, fieldName in item
+					td= fieldName
+			tr
+				each field, fieldName in item
+					td=field 
+		a(href='/items/' + key)
+			button= 'edit'
+		form(onsubmit='deleteItem("'+ key +'")' )
+			input(type='submit' value='delete')
+	a(href='/')
+		button= 'back'

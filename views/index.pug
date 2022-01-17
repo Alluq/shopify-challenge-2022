@@ -1,0 +1,21 @@
+extends layout 
+
+block content
+	h4= 'View All Items'
+	a(href='./items')
+		button= 'View All Items'
+	h4= 'Create Item'
+	form(method='post' action='./items')
+		label= 'Item Code'
+		input(type='text' name='code' id='code' )
+		label= 'Group'
+		select(name='group' multiple)
+			each group in groups
+			option(name=group value=group)= group
+		label= 'Item Title'
+		input(type='text' name='title' id='title' )
+		label= 'Item Description'
+		input(type='textbox' name='description' id='description' )
+		input(type='submit')
+		
+		
