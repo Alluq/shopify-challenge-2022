@@ -7,11 +7,11 @@ block content
 			each group in groups
 				option(name=group value=group )= group
 		label= 'Item Code'
-		input(type='text' name='code' id='code' value=code)
+		input(type='text' name='code' id='code' value=item_data.code)
 		label= 'Item Title'
-		input(type='text' name='title' id='title' value=title)
+		input(type='text' name='title' id='title' value=item_data.title)
 		label= 'Item Description'
-		input(type='textbox' name='description' id='description' value=description)
+		input(type='textbox' name='description' id='description' value=item_data.description)
 		input(type='submit')
 	a(href='/items')
 		button= 'back'
