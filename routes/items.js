@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../utils/db/lowdb.js';
 import { addItemToGroup, deleteItemFromGroup, getAllGroupNames } from './groups.js';
+import itemValidator from '../utils/db/validators/itemValidator.js'
 const router = express.Router();
 const ITEMS_TABLE = 'items';
 
@@ -16,7 +17,10 @@ router.get('/:uid', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-	console.log(req.body);
+	if(!itemValidator(req.body)){
+		res.status(403).send('Fields are incorrect')
+		return;
+	}
 	const itemId = await db.create(ITEMS_TABLE, req.body);
 	if(req.body.groups){
 		for(const i in req.body.groups){
@@ -30,20 +34,23 @@ router.post('/', async (req, res, next) => {
 });
 
 router.put('/', async (req, res, next) => {
+	if(!itemValidator(req.body)){
+		res.status(403).send('Fields are incorrect')
+		return;
+	}
 	db.updateBatch(ITEMS_TABLE, req.body, req.query);
 	res.send('updated');
 });
 
 router.put('/:uid', async (req, res, next) => {
+	if(!itemValidator(req.body)){
+		res.status(403).send('Fields are incorrect')
+		return;
+	}
 	const previousItemData = await db.fetchSingle(ITEMS_TABLE, req.params.uid);
 	await db.updateSingle(ITEMS_TABLE, req.body, req.params.uid);
 	await updateItemGroups(previousItemData, req.body, req.params.uid);
 	res.send('updated');
-});
-
-router.delete('/', async (req, res, next) => {
-	db.deleteBatch(ITEMS_TABLE, req.body);
-	res.send('deleted');
 });
 
 router.delete('/:uid', async (req, res, next) => {
@@ -60,6 +67,7 @@ router.delete('/:uid', async (req, res, next) => {
 });
 
 export default router;
+
 
 const updateItemGroups = async (previousItemData, currentItemData, itemId) => {
 	const previousGroups = previousItemData['groups'] ? previousItemData['groups'] : [];
