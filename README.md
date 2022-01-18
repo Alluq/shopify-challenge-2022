@@ -1,4 +1,5 @@
-# Shopify 2022 Challenge
+# Shopify 2022 Challenge [![Shopify](https://img.shields.io/badge/​-Shopify-7AB55C?style=flat&logo=shopify&logoColor=white)](https://www.shopify.com/)
+
 
 ## Hey There! :wave: 
 My name is Allen Lu and this is my submission for the 2022 Shopify Challenge!
@@ -26,7 +27,7 @@ First of all you need to make sure that you have Node and NPM installed (I'm usi
 
 4. After you've ran `npm install` you can run the server by running `npm start` this will automatically start the server on http://localhost:3000
 
-## Software design Aspects taken into account :gears:
+## Software design Aspects taken into account :wrench:
 
 For the the most part this project follows the MVC architecture. This was due to that fact that for an application of this size it was far easier to give data to the views in order to display the UI and also so that you wouldn't need to run 2 different server instances to run this application (simpler for the user). MVC is benificial as it abstracts a lot of the logic for the database interactions. Which is great if you want to switch for something a lot more suited to production such as MongoDB.
 I went for a very simple database called `lowdb` which is an npm package that installs when you run npm install.
