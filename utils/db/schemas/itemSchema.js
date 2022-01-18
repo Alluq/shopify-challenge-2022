@@ -1,9 +1,9 @@
-import arrayValidator from '../validators/arrayValidator.js'
+import objectValidator from '../validators/objectValidator.js'
 import stringValidator from '../validators/stringValidator.js'
 
 
 const Item = {
-	groups: arrayValidator,
+	groups: objectValidator,
 	code: stringValidator,
 	title: stringValidator,
 	description: stringValidator

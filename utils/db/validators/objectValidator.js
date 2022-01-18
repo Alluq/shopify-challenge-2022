@@ -1,6 +1,6 @@
 
 const validate = (input) => {
-	return (typeof input === 'Array');
+	return (typeof input === 'object');
 }
 
 export default validate;
