@@ -24,9 +24,12 @@ const create = async (table, data, id = uuid()) => {
 	return id;
 };
 
+// Queries for multiple entries
 const query = async (table, filters = {}) => {
 	await db.read();
 	let output = {};
+
+	//filtering elements
 	elementCycle: for(const key in db.data[table]){
 		const element = db.data[table][key];
 		filterCycle: 
@@ -40,26 +43,33 @@ const query = async (table, filters = {}) => {
 	return output;
 }
 
+//fetchs a single item based in id or index
 const fetchSingle = async (table, id) => {
 	await db.read();
 	const result = db.data[table][id];
-	// console.log(id);
 	if(result === undefined){
 		return false
 	}
 	return result;
 }
 
+//updates elements in batch
 const updateBatch = async (table, updateData, filters = {}) => {
 		await db.read();
+
+		//cycles through every element
 		elementCycle: for(const i in db.data[table]){
 			const dataElement = db.data[table][i];
+
+			//Checks if element matches filters
 			filterCycle: 
 			for(const filterKey in filters){
 				if (!dataElement[filterKey] || dataElement[filterKey] != filters[filterKey]){
 					continue elementCycle;
 				}
 			}
+
+			//Updating data
 			for(const key in updateData){
 				dataElement[key] = updateData[key];
 			} 
@@ -73,9 +83,14 @@ const updateSingle = async (table, updateData, id) => {
 		await db.write();
 }
 
+//deletes elements in bulk based off of filters
 const deleteBatch = async (table, filters = {}) => {
 	await db.read();
+
+	//gets elements
 	let elementsToDelete = query(table, filters = {});
+
+	//deletes elements according to query
 	for(const key in elementsToDelete){
 		db.data[table].delete(key)
 	}

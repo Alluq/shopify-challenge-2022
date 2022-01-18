@@ -106,7 +106,6 @@ const updateItemGroups = async (previousItemData, currentItemData, itemId) => {
 	//Adding new groups
 	for(const i in groupsToBeAdded){
 		const group = groupsToBeAdded[i];
-		// console.log("Group added:" + group);
 		await addItemToGroup(itemId, group);
 	}
 }

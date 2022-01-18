@@ -6,12 +6,7 @@ const createItem = async (id) => {
 
 	const body = getFormData(form);
 
-	console.log(body);
-
 	const hostname = 'http://' + window.location.host + '/items';
-
-	console.log(JSON.stringify(body));
-
 
 	const res = await fetch(hostname, {
 		method: "POST",
@@ -39,12 +34,7 @@ const updateItem = async (id) => {
 
 	const body = getFormData(form);
 
-	console.log(body);
-
 	const hostname = window.location.href;
-
-	console.log(JSON.stringify(body));
-
 
 	const res = await fetch(hostname, {
 		method: "PUT",

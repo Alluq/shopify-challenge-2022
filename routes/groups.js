@@ -67,7 +67,6 @@ export const deleteItemFromGroup = async (itemId, groupName) => {
 	let group = await db.fetchSingle(GROUPS_TABLE, groupName);
 	group = group ? group : [];
 	group = group.filter((element) => element != itemId);
-	console.log(group);
 
 	await db.updateSingle(GROUPS_TABLE, group, groupName);
 }
