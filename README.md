@@ -44,3 +44,6 @@ Ideally for next steps to is I would dockerize this so that any docker-enabled e
 
 Adding unit tests would also be a great idea for later on, however due to the time constraint that I currently have (Full courseload + 2 Executive Positions in Extracurriculars :sweat:), manual testing through Postman and UI was the way to verify correctness. In the future I'd love to use jest for unit testing and possible automate some REST testing using Insomnia.
 
+Also if you have any feedback whatsoever feel free to email it to me at: allenluqin@gmail.com
+
+I'm always looking to improve my work so anything helps :)
