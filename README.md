@@ -26,7 +26,7 @@ First of all you need to make sure that you have Node and NPM installed (I'm usi
 
 4. After you've ran `npm install` you can run the server by running `npm start` this will automatically start the server on http://localhost:3000
 
-## Software design Aspects taken into account
+## Software design Aspects taken into account :gears:
 
 For the the most part this project follows the MVC architecture. This was due to that fact that for an application of this size it was far easier to give data to the views in order to display the UI and also so that you wouldn't need to run 2 different server instances to run this application (simpler for the user). MVC is benificial as it abstracts a lot of the logic for the database interactions. Which is great if you want to switch for something a lot more suited to production such as MongoDB.
 I went for a very simple database called `lowdb` which is an npm package that installs when you run npm install.
@@ -36,7 +36,7 @@ A lot of the logic for interacting with lowdb rests in `lowdb.js` in the `utils`
 
 I also tried abstracting much of the verification of items by using schemas which are in the `utils/db/schemas` folder.
 
-## What I would do to improve
+## What I would do to improve :bulb:
 
 In order to improve this project I would most likely switch to a different database that allows for more concurrent actions and has better performance with larger datasets. 
 
